@@ -1,0 +1,29 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Sign up as Evaluator</h3>
+  </div>
+  <div class="panel-body">
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :name %><br />
+	  <%= f.text_field :name %></div>
+
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" , class: "btn btn-primary"%></div>
+<% end %>
+
+<%= render "evaluators/shared/links" %>
+</div>
+</div>
