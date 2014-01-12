@@ -1,0 +1,14 @@
+<% if @comment.errors.any?%>
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= @comment.errors.full_messages.join(", ")%>
+</div>
+
+<%end%>
+<%=form_for @comment do |comment|%>
+<div><%= comment.label :comment %><br />
+	  <%= comment.text_area :comment%></div>
+
+	<%= hidden_field_tag :vendor_id,  @vendor.id, name: "comment[vendor_id]"%>
+	<%= comment.submit "Comment", class: "btn btn-primary"%>
+<%end%>

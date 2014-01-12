@@ -1,0 +1,5 @@
+<%if evaluator_signed_in?%>
+		<%= link_to content_tag(:i,"" ,class: "icon-thumbs-up"), vote_like_path(@vendor), class: "btn #{current_evaluator.liked_vendor(@vendor)}", remote: true %>
+		<% end %><%= vote_percent(@vendor)%> %
+		<%if evaluator_signed_in?%>
+		<%= link_to content_tag(:i,"" ,class: "icon-thumbs-down"), vote_dislike_path(@vendor), class: "btn #{current_evaluator.disliked_vendor(@vendor)}", remote: true %><% end %>
