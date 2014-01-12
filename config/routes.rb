@@ -2,7 +2,12 @@ RatingSystem::Application.routes.draw do
   root "dashboard#index"
   devise_for :evaluators
   devise_for :vendors
-  resources :vendors
+  resources :vendors, :comments
+  resources :votes do
+   get "like"
+   get "dislike"
+  end
+  get "/search" => "dashboard#search"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

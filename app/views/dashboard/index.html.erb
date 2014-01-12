@@ -1,15 +1,17 @@
 <h1>Dashboard#index</h1>
 
+<%= form_tag("/search", method: "get") do %>
 <div class="row" style="min-height:100px">
 <div class="col-lg-6">
 <div class="input-group">
 <span class="input-group-btn">
 <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
 </span>
-<input type="text" class="form-control">
+<%= text_field_tag(:query, params[:query], class:"form-control", placeholder: "Search type of Application or Company Profile") %>
 </div><!-- /input-group -->
 </div><!-- /.col-lg-6 -->
 </div>
+<%end %>
 <div class="row"> 
 <div class="col-sm-6 col-md-2">
 	    Featured comapnies
@@ -32,7 +34,7 @@
 	  <div class="col-sm-6 col-md-2">
 	      <a href= "<%= vendor_path(vendor)%>"><img class="img-thumbnail" src="/assets/unknown.jpg" alt="..." width="100" height="100">
 	      <div class="caption">
-	        <h3>Thumbnail label</h3>
+	        <%= vendor.name.capitalize%>
 	        
 	      </div>
 	  		</a>
@@ -40,14 +42,20 @@
 	  </div>
 	  <div class="col-sm-6 col-md-5" >
 		<div class="panel panel-default" style="min-height:100px">
+			<div class="panel-heading">
+    <h3 class="panel-title"><strong>Business Type</strong> <%=vendor.business_type%></h3>
+  </div>
 			<div class="panel-body">
-			Basic panel example
+				<blockquote>
+  <p><%=vendor.comments.last.try(:comment)%>.</p>
+  <small><%=vendor.comments.last.try(:evaluator).try(:name).try(:capitalize)%></small>
+</blockquote>
 			</div>
 		</div>
 
 	  </div>
 	  <div class="col-sm-6 col-md-1" >
-		<strong>15</strong>
+		<strong><%= number_to_currency(vote_percent(vendor), :unit => "", :separator => ".", :delimiter => "," ,:precision => 2)%> %</strong>
 
 	  </div></div>
 	<% end %>

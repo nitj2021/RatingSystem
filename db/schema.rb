@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20140112110837) do
 
   create_table "comments", force: true do |t|
     t.text     "comment"
+    t.integer  "vendor_id"
+    t.integer  "evaluator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
